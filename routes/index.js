@@ -13,7 +13,8 @@ router.get('/dashbord', (req, res) => {
 
 //@desc Adding new user
 //@route POST/add user
-router.post('/adduser', actions.addNewUser )
+router.post('/adduser', actions.addNewUser );
+router.post('/authenticate', actions.authenticate);
 
 
 
