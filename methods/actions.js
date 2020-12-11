@@ -1,4 +1,4 @@
-var user = require('../models/user')
+var User = require('../models/user')
 var jwt = require('jwt-simple')
 var confiug = require('../config/dbConfig')
 const { config } = require('dotenv/types')
