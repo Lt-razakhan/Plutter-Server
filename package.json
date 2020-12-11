@@ -1,7 +1,7 @@
 {
   "name": "plutter-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Authentication api for plutter",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
@@ -21,7 +21,7 @@
     "graphql": "^15.4.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
-    "mongoose": "^5.11.6",
+    "mongoose": "^5.11.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",

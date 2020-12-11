@@ -1,21 +1,25 @@
 const express = require('express')
 const actions = require('../methods/actions')
-const router = express.Router();
-
+const router = express.Router()
 
 router.get('/', (req, res) => {
-    res.send("Hello world")
-});
+    res.send('Hello World')
+})
 
-router.get('/dashbord', (req, res) => {
-    res.send("Hello World raza kahn  this side");
-});
+router.get('/dashboard', (req, res) => {
+    res.send('Dashboard')
+})
 
 //@desc Adding new user
-//@route POST/add user
-router.post('/adduser', actions.addNewUser );
-router.post('/authenticate', actions.authenticate);
+//@route POST /adduser
+router.post('/adduser', actions.addNew)
 
+//@desc Authenticate a user
+//@route POST /authenticate
+router.post('/authenticate', actions.authenticate)
 
+//@desc Get info on a user
+//@route GET /getinfo
+router.get('/getinfo', actions.getinfo)
 
-module.exports = router;        
+module.exports = router
