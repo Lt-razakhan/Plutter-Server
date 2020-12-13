@@ -1,4 +1,4 @@
 module.exports = {
     secret : 'yoursecret',
-    database : 'mongodb+srv://Plutter:Razakhan@plutter@cluster0.t0pbb.mongodb.net/Plutter-Server?retryWrites=true&w=majority'
+    database : 'mongodb+srv://RazaKhan:Razakhan@plutter@cluster0.azt1z.mongodb.net/Plutter?retryWrites=true&w=majority'
 }

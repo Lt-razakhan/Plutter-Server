@@ -12,14 +12,22 @@ router.get('/dashboard', (req, res) => {
 
 //@desc Adding new user
 //@route POST /adduser
-router.post('/adduser', actions.addNew)
+router.post('/createUser', actions.createUser);
 
 //@desc Authenticate a user
 //@route POST /authenticate
-router.post('/authenticate', actions.authenticate)
+router.post('/authenticate', actions.authenticate);
 
 //@desc Get info on a user
 //@route GET /getinfo
-router.get('/getinfo', actions.getinfo)
+router.get('/getinfo', actions.getinfo);
+
+//@desc Patch udate user
+//@route Update User
+router.patch('/updateUser/:username', actions.updateUser);
+
+//@desc Delete user 
+//@route Delete User
+router.delete('/delete/:username', actions.deleteUser);
 
 module.exports = router
