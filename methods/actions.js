@@ -3,24 +3,25 @@ var jwt = require('jwt-simple')
 var config = require('../config/dbconfig')
 
 var functions = {
-    createUser: function (req, res) {
+    signUp : function (req, res) {
         if ((!req.body.emialId) || (!req.body.password) || (!req.body.username)) {
             res.json({ success: false, msg: 'Enter all fields' })
         }
         else {
-            var newUser = User({
+            const user = new User({
                 username: req.body.username,
-                emialId:  req.body.emialId,
-                password: req.body.password
+                password: req.body.password,
+                email: req.body.email,
             });
-            newUser.save(function (err, newUser) {
-                if (err) {
-                    res.json({ success: false, msg: 'Failed to save' })
-                }
-                else {
-                    res.json({ success: true, msg: 'Successfully saved' })
-                }
-            })
+            user
+                .save()
+                .then(() => {
+                    console.log("user registered");
+                    res.status(200).json({ msg: "User Successfully Registered" });
+                })
+                .catch((err) => {
+                    res.status(403).json({ msg: err });
+                });
         }
     },
     authenticate: function (req, res) {
