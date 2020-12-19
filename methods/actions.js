@@ -1,9 +1,10 @@
 var User = require('../models/user')
 var jwt = require('jwt-simple')
 var config = require('../config/dbconfig')
+const user = require('../models/user')
 
 var functions = {
-    signUp : function (req, res) {
+    signUp: function (req, res) {
         if ((!req.body.emialId) || (!req.body.password) || (!req.body.username)) {
             res.json({ success: false, msg: 'Enter all fields' })
         }
@@ -11,7 +12,8 @@ var functions = {
             const user = new User({
                 username: req.body.username,
                 password: req.body.password,
-                email: req.body.email,
+                emialId: req.body.email,
+                conformPassword: req.body.conformPassword,
             });
             user
                 .save()
@@ -23,6 +25,25 @@ var functions = {
                     res.status(403).json({ msg: err });
                 });
         }
+    },
+
+    login: function (req, res) {
+        user.findOne(
+            {username: req.body.username}, (err, result) => {
+                if (err) res.status(403).json({ msg: err });
+                if (result == null) {
+                    res.status(404).json({ msg: "Username or password incorrect" });
+                }
+                if (result.password == req.body.password) {
+                    res.json("User Loged in")
+                }
+                else {
+                    res.status(403).json("password is incorrect")
+                }
+
+            });
+
+
     },
     authenticate: function (req, res) {
         User.findOne({

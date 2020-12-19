@@ -10,23 +10,28 @@ router.get('/dashboard', (req, res) => {
     res.send('Dashboard')
 })
 
-//@desc Adding new user
+
+//@plutter Logining the user
+//@routw POST Login
+router.post('/login', actions.login);
+
+//@plutter Adding new user
 //@route POST /adduser
 router.post('/signUp', actions.signUp);
 
-//@desc Authenticate a user
+//@plutter Authenticate a user
 //@route POST /authenticate
 router.post('/authenticate', actions.authenticate);
 
-//@desc Get info on a user
+//@plutter Get info on a user
 //@route GET /getinfo
 router.get('/getinfo', actions.getinfo);
 
-//@desc Patch udate user
+//@plutter Patch udate user
 //@route Update User
 router.patch('/updateUser/:username', actions.updateUser);
 
-//@desc Delete user 
+//@plutter Delete user 
 //@route Delete User
 router.delete('/delete/:username', actions.deleteUser);
 
