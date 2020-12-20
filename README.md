@@ -1,3 +1,2 @@
 # Pluter-Server
-We are useing apis for backend of oour application using node.js 
-We are creating Authentication API to authenticate our user we are using mongoDB.
+The code in this repositry is used for backend of plutter application
