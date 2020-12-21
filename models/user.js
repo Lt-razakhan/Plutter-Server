@@ -8,6 +8,11 @@ var userSchema = new Schema({
         unique: true,
 
     },
+    emailId: {
+        type: String,
+        require: true
+
+    },
     password: {
         type: String,
         required: true
@@ -16,12 +21,9 @@ var userSchema = new Schema({
     conformPassword: {
         type: String,
         required: true,
-        
-    },
-    emilId: {
-        type: String,
-        require: true
+
     }
+
 })
 
 userSchema.pre('save', function (next) {
@@ -36,6 +38,7 @@ userSchema.pre('save', function (next) {
                     return next(err);
                 };
                 user.password = hash;
+                user.conformPassword = hash;
                 next();
             });
 

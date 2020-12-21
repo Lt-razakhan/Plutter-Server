@@ -1,3 +1,4 @@
+
 const express = require('express')
 const actions = require('../methods/actions')
 const router = express.Router()
@@ -18,10 +19,6 @@ router.post('/login', actions.login);
 //@plutter Adding new user
 //@route POST /adduser
 router.post('/signUp', actions.signUp);
-
-//@plutter Authenticate a user
-//@route POST /authenticate
-router.post('/authenticate', actions.authenticate);
 
 //@plutter Get info on a user
 //@route GET /getinfo

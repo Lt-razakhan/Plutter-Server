@@ -5,47 +5,56 @@ const user = require('../models/user')
 
 var functions = {
     signUp: function (req, res) {
-        if ((!req.body.emialId) || (!req.body.password) || (!req.body.username)) {
+        if ((!req.body.emailId) || (!req.body.password) || (!req.body.username) || (!req.body.conformPassword)) {
             res.json({ success: false, msg: 'Enter all fields' })
         }
         else {
             const user = new User({
                 username: req.body.username,
                 password: req.body.password,
-                emialId: req.body.email,
+                emailId: req.body.email,
                 conformPassword: req.body.conformPassword,
             });
-            user
-                .save()
-                .then(() => {
-                    console.log("user registered");
-                    res.status(200).json({ msg: "User Successfully Registered" });
-                })
-                .catch((err) => {
-                    res.status(403).json({ msg: err });
-                });
+            if (password == conformPassword) {
+                return user
+                    .save()
+                    .then(() => {
+                        console.log("user registered");
+                        res.status(200).json({ msg: "User Successfully Registered" });
+                    })
+                    .catch((err) => {
+                        res.status(403).json({ msg: err });
+                    });
+            }
+            else{
+                return res.s
+            }
+
+
+
+
         }
     },
 
+    // login: function (req, res) {
+    //     user.findOne(
+    //         {username: req.body.username}, (err, result) => {
+    //             if (err) res.status(403).json({ msg: err });
+    //             if (result == null) {
+    //                 res.status(404).json({ msg: "Username or password incorrect" });
+    //             }
+    //             if (result.password == req.body.password) {
+    //                 res.json("User Loged in")
+    //             }
+    //             else {
+    //                 res.status(403).json("password is incorrect")
+    //             }
+
+    //         });
+
+
+    // },
     login: function (req, res) {
-        user.findOne(
-            {username: req.body.username}, (err, result) => {
-                if (err) res.status(403).json({ msg: err });
-                if (result == null) {
-                    res.status(404).json({ msg: "Username or password incorrect" });
-                }
-                if (result.password == req.body.password) {
-                    res.json("User Loged in")
-                }
-                else {
-                    res.status(403).json("password is incorrect")
-                }
-
-            });
-
-
-    },
-    authenticate: function (req, res) {
         User.findOne({
             username: req.body.username
         }, function (err, user) {
